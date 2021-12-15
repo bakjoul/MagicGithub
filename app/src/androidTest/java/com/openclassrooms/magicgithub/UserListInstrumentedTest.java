@@ -36,17 +36,20 @@ public class UserListInstrumentedTest {
 
     @Test
     public void checkIfRecyclerViewIsNotEmpty() {
+        // Vérifie si la vue à afficher est vide
         onView(withId(R.id.activity_list_user_rv)).check(new RecyclerViewUtils.ItemCount(currentUsersSize));
     }
 
     @Test
     public void checkIfAddingRandomUserIsWorking() {
+        // Vérifie si l'ajout d'un utilisateur aléatoire fonctionne
         onView(withId(R.id.activity_list_user_fab)).perform(click());
         onView(withId(R.id.activity_list_user_rv)).check(new RecyclerViewUtils.ItemCount(currentUsersSize + 1));
     }
 
     @Test
     public void checkIfRemovingUserIsWorking() {
+        // Vérifie si la supression d'un utilisateur fonctionne
         onView(ViewMatchers.withId(R.id.activity_list_user_rv))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, clickChildView(R.id.item_list_user_delete_button)));
         onView(withId(R.id.activity_list_user_rv)).check(new RecyclerViewUtils.ItemCount(currentUsersSize - 1));

@@ -33,6 +33,7 @@ public class UserRepositoryTest {
     
     @Test
     public void getUsersWithSuccess() {
+        // Teste la récupération de la liste des utilisateurs
         List<User> usersActual = userRepository.getUsers();
         List<User> usersExpected = FAKE_USERS;
         assertThat(usersActual, containsInAnyOrder(usersExpected.toArray()));
@@ -40,6 +41,7 @@ public class UserRepositoryTest {
 
     @Test
     public void generateRandomUserWithSuccess() {
+        // Teste l'ajout d'un utilisateur aléatoire
         userRepository.getUsers().clear();
         userRepository.generateRandomUser();
         User user = userRepository.getUsers().get(0);
@@ -54,6 +56,7 @@ public class UserRepositoryTest {
 
     @Test
     public void deleteUserWithSuccess() {
+        // Teste la suppression d'un utilisateur
         User userToDelete = userRepository.getUsers().get(0);
         userRepository.deleteUser(userToDelete);
         assertFalse(userRepository.getUsers().contains(userToDelete));
